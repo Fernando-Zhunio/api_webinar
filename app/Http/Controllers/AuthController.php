@@ -53,13 +53,19 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'url_img'=>'image|mimes:jpeg,jpg,png,gif|max:1000',
         ]);
+
+        if(!$request->has("url_img") || empty($request->url_img)){
+            $request->url_img = "default_profile_user";
+        }
 
         $userCurrent = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'url_img' => $request->url_img
         ]);
 
         $userCurrent->assignRole('usuario');

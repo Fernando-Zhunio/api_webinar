@@ -26,12 +26,12 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('user', 'AuthController@user');
     });
 });
-Route::group(['middleware'=>'auth:api'],function(){
-    Route::get('webinar','WebinarController@index');
-    Route::post('webinar','WebinarController@store');
-    Route::patch('webinar/{webinar}/update','WebinarController@update');
-    Route::delete('webinar{webinar}/destroy','WebinarController@destroy');
-    Route::post('webinar/{webinar}/aprobar','WebinarController@aprobarWebinar');
-
+// Route::group(['middleware'=>'auth:api'],function(){
+    Route::resource('webinar','WebinarController');
+    // Route::get('webinar','WebinarController@index');
+    // Route::post('webinar','WebinarController@store');
+    // Route::patch('webinar/{webinar}/update','WebinarController@update');
+    // Route::delete('webinar{webinar}/destroy','WebinarController@destroy');
+    // Route::post('webinar/{webinar}/aprobar','WebinarController@aprobarWebinar');
     // ->name('webinar.store');
-});
+// });

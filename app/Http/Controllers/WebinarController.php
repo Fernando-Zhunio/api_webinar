@@ -17,12 +17,15 @@ class WebinarController extends Controller
     public function __construct()
     {
         $this->middleware('can:webinar_aprobar')->only('aprobarWebinar');
+        $this->middleware('auth:api')->except('index');
+        
         // $this->middleware('can:webinar_aprobar');
         // $this->middleware('can:webinar_aprobar');
     }
     public function index()
     {
-        $webinars = webinar::with('user:id,name,email')->paginate(10);
+       $search = request()->get('search');
+        $webinars = webinar::with('user','coordinate')->Search($search)->paginate(10);
         
         return response()->json([
             'success'=>true,
@@ -76,6 +79,9 @@ class WebinarController extends Controller
                 'success' => false,
                 'errors' => $errors->implode('0', ' - '),
             ));
+        }
+        if(!$request->has("url_img") || empty($request->url_img)){
+            $request->url_img = "default_webinar_".random_int(1,2);
         }
 
         $webinar = new webinar($request->all());
@@ -134,11 +140,13 @@ class WebinarController extends Controller
                 'errors' => $errors->implode('0', ' - '),
             ));
         }
-        $data = $request->user()->webinar()->update($request->all());
+        $webinar->update($request->all());
+
+        // $data = $request->user()->webinar()->update($request->all());
 
         return response()->json([
             'success'=>true,
-            'data'=>$data
+            'data'=>$webinar
         ]);
     }
 

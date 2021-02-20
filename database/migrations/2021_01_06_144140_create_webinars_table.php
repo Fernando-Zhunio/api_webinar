@@ -16,13 +16,15 @@ class CreateWebinarsTable extends Migration
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id');
             $table->string('description',1000);
             $table->string('name');
             $table->string('url_img')->nullable();
             $table->string('address');
             $table->boolean('status')->default(false);
             $table->timestamp('start');
+            $table->timestamp('end');
+            $table->foreignId('user_id');
+            $table->foreignId('coordinate_id');
         });
     }
 

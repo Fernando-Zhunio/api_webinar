@@ -20,6 +20,7 @@ class RolesAndPermissionSeeder extends Seeder
             'name' => 'Fernando Zhunio Reyes',
             'email' => 'fzhunio91@hotmail.com',
             'password' => Hash::make('fernando1991'),
+            'url_img' => 'default_profile_user'
         ]);
         Permission::create(['name' => 'webinar_editar','guard_name'=>'api']);
         Permission::create(['name' => 'webinar_crear','guard_name'=>'api']);
