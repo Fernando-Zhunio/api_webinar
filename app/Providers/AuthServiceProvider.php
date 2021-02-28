@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Policies\WebinarPolice;
-use App\webinar;
+use App\Webinar;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -17,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        webinar::class=>WebinarPolice::class
+        Webinar::class=>WebinarPolice::class
     ];
 
     /**

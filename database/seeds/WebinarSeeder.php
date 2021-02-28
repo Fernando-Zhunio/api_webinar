@@ -11,6 +11,6 @@ class WebinarSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Webinar::class, 50)->create();
     }
 }

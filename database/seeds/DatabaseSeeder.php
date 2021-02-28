@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call(RolesAndPermissionSeeder::class);
+        factory(App\User::class, 20)->create();
+        factory(App\Webinar::class, 50)->create();
     }
 }

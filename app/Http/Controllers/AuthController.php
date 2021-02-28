@@ -70,9 +70,11 @@ class AuthController extends Controller
 
         $userCurrent->assignRole('usuario');
 
-        return response()->json([
-            'message' => 'Successfully created user!'
-        ], 201);
+        return $this->login($request);
+        // return response()->json([
+        //     'success'=>true,
+        //     'data' => 'Successfully created user!'
+        // ], 201);
     }
 
        /**

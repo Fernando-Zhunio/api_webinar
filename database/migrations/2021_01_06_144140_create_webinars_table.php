@@ -20,6 +20,7 @@ class CreateWebinarsTable extends Migration
             $table->string('name');
             $table->string('url_img')->nullable();
             $table->string('address');
+            $table->string('address_web')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamp('start');
             $table->timestamp('end');

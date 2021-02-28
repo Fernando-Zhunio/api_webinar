@@ -16,7 +16,7 @@ class RolesAndPermissionSeeder extends Seeder
     public function run()
     {
         // Permisos
-        User::create([
+        $user = User::create([
             'name' => 'Fernando Zhunio Reyes',
             'email' => 'fzhunio91@hotmail.com',
             'password' => Hash::make('fernando1991'),
@@ -41,5 +41,6 @@ class RolesAndPermissionSeeder extends Seeder
         $organizador->givePermissionTo([
         'webinar_crear','webinar_editar'
         ]);
+        $user->assignRole('writer');
     }
 }

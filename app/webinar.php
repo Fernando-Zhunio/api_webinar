@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Webinar extends Model
 {
-    protected $fillable = ['user_id','description','name','url_img','address','status','start'];
-
+    protected $fillable = ['user_id','description','name','url_img','address','address_web','status','start','end','coordinate_id'];
+    protected $with = ['coordinate','user'];
   
 
     public function user(){

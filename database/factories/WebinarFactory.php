@@ -19,11 +19,9 @@ $factory->define(Webinar::class, function (Faker $faker) {
             'url_img' => 'default_webinar_'.random_int(1,2),
             'address' => $faker->address,
             'status'  => rand(0,1) == 1,
-            // 'start' => $faker->dateTime(now()+15,  null),
             'start' => $date,
-            // 'end' => $faker->dateTime(now()+15,  null),
             'end' => $date_end,
+            'address_web'=>$faker->url,
             'coordinate_id' => factory(App\Coordinate::class) 
-
     ];
 });
